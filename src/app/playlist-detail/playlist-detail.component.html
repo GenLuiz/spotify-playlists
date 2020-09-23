@@ -1,0 +1,14 @@
+<div *ngIf="playlist">
+    <h2>{{playlist.name}} Details</h2>
+    <div>
+        <span>id: </span>{{playlist.id}}
+    </div>
+    <div>
+        <span>name: </span>{{playlist.name}}
+    </div>
+
+    <div>
+        <label>Name:</label>
+        <input [(ngModel)]="playlist.name" placeholder="name" />
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<h2>My Playlists</h2>
+<ul class="playlists">
+    <li *ngFor="let playlist of playlists" (click)="onSelect(playlist)"
+        [class.selected]="playlist === selectedPlaylist">
+        <span class="badge">{{playlist.id}}</span> {{playlist.name}}
+    </li>
+</ul>
+
+<app-playlist-detail [playlist]="selectedPlaylist"></app-playlist-detail>
+
