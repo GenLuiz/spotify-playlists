@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Playlist } from '../playlist';
 import { PLAYLISTS } from '../mock-playlist';
+import { PlaylistService} from '../playlist.service';
 
 @Component({
   selector: 'app-playlists',
@@ -9,16 +10,21 @@ import { PLAYLISTS } from '../mock-playlist';
 })
 export class PlaylistsComponent implements OnInit {
 
-  playlists = PLAYLISTS;
+  playlists = Playlist[];
   selectedPlaylist: Playlist;
 
-  constructor() { }
+  constructor(private playlistService: PlaylistService) { }
 
   ngOnInit(): void {
+    this.getPlaylists();
   }
 
   onSelect(playlist: Playlist): void {
     this.selectedPlaylist = playlist;
+  }
+
+  getPlaylists(): void{
+    this.playlists = this.playlistService.getPlaylists().subscribe (this.playlists => this.playlists = this.playlists);
   }
 
 }
